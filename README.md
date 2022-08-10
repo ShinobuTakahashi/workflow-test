@@ -1,3 +1,3 @@
 # workflow-test
 
-main
+main 1
