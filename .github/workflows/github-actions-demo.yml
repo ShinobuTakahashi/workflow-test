@@ -2,7 +2,7 @@ name: GitHub Actions Test
 on:
   push:
     branches:
-      - main
+      - v2-main
 
 jobs:
   Explore-GitHub-Actions:
