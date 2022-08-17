@@ -1,0 +1,9 @@
+name: test
+
+on: [push, pull_request]
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 v2-main test."
