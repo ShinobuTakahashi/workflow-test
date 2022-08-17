@@ -1,0 +1,23 @@
+{
+  "name": "workflow-test",
+  "version": "2.0.0",
+  "description": "v1-main",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "echo \"test doc\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShinobuTakahashi/workflow-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShinobuTakahashi/workflow-test/issues"
+  },
+  "homepage": "https://github.com/ShinobuTakahashi/workflow-test#readme"
+}
