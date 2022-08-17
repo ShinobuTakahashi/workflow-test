@@ -1,6 +1,9 @@
 name: GitHub Actions Test
 on:
-  [push, pull_request]:
+  push:
+    branches:
+      - v1-main
+  pull_request:
     branches:
       - v1-main
 
