@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "echo \"test doc\" && exit 1"
+    "doc": "echo \"v2-main doc \" && exit 1"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,42 @@
+name: Deploy API Document on GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v2-main
+
+env:
+  NODE_VERSION: '16'
+  PUBLIC_DIR: public
+  V2_REF: v2-main
+  V2_DIR: v2
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Checkout (v2)
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.V2_REF }}
+          path: ${{ env.V2_DIR }}
+      - name: Install and Build (v2)
+        working-directory: ${{ env.V2_DIR }}
+        run: |
+          npm install
+          npm run doc
+      - name: Copy API docs
+        run: |
+          mkdir -p ${{ env.PUBLIC_DIR }}
+          cp -r ${{ env.V2_DIR }}/doc/html/ ${{ env.PUBLIC_DIR }}/${{ env.V2_DIR }}/
+      - name: Check API docs
+        run: |
+          if [ ! -e ${{ env.PUBLIC_DIR }}/${env.V2_DIR}/index.html ]; then
+            echo "'${{ env.PUBLIC_DIR }}/${env.V2_DIR}/index.html' not found."
+            exit 1;
+          fi
