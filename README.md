@@ -1,4 +1,4 @@
 # workflow-test
 
 v2-main
-test1
+test1,2
