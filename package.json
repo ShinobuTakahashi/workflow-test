@@ -1,5 +1,5 @@
 {
-  "name": "workflow-test",
+  "name": "@shinobu_takahashi/workflow-test",
   "version": "0.0.1",
   "description": "for test",
   "main": "index.js",
