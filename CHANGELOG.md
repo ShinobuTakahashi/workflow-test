@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.7
+* 内部モジュールの更新
+
 ## 0.0.6
 * hhhhhhhhoge
 
