@@ -1,13 +1,13 @@
 {
-  "name": "workflow-test",
-  "version": "3.0.0",
+  "name": "@takahoge/workflow-test",
+  "version": "0.0.1",
   "description": "v1-main",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"test!!\"",
     "doc": "echo \"test doc\" && exit 1"
   },
   "repository": {
