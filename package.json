@@ -1,7 +1,7 @@
 {
   "name": "@takahoge/workflow-test",
   "version": "0.0.1",
-  "description": "v1-main",
+  "description": "for test",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -15,9 +15,8 @@
     "url": "git+https://github.com/ShinobuTakahashi/workflow-test.git"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ShinobuTakahashi/workflow-test/issues"
-  },
-  "homepage": "https://github.com/ShinobuTakahashi/workflow-test#readme"
+  "license": "",
+  "publishConfig": {
+    "access": "public"
+  }
 }
