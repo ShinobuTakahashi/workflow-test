@@ -1,4 +1,7 @@
 # CHANGELOG
 
+## 0.0.4
+- test
+
 ## 0.0.3
 - test
