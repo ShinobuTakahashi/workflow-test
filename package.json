@@ -1,6 +1,6 @@
 {
   "name": "@shinobu_takahashi/workflow-test",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "for test",
   "main": "index.js",
   "directories": {
