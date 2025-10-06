@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: 18
+  NODE_VERSION: 20
 
 jobs:
   release:
@@ -25,7 +25,7 @@ jobs:
           npm ci
           npm test
       - name: Publish and Release
-        uses: akashic-games/action-release@fix-error-when-commit
+        uses: akashic-games/action-release@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           npm_token: ${{ secrets.NPM_TOKEN }}

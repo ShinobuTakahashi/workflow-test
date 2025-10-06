@@ -1,5 +1,5 @@
 {
-    "name": "namagame-comment-plugin sandbox",
+    "name": "test-takahashi sandbox",
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
