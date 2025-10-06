@@ -1,6 +1,6 @@
 {
   "name": "@shinobu_takahashi/workflow-test",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "for test",
   "main": "index.js",
   "directories": {
@@ -20,6 +20,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "typescript": "~5.2.0"
+    "typescript": "~5.2.0",
+    "tsyringe": "4.2.0",
+    "just-scripts": "~2.2.0" 
   }
 }
