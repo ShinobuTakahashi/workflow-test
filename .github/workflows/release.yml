@@ -29,4 +29,4 @@ jobs:
         uses: akashic-games/action-release@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     npm_token: ${{ secrets.NPM_TOKEN }}
+          npm_token: ${{ secrets.NPM_TOKEN }}
