@@ -30,7 +30,7 @@ jobs:
       #   with:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
       #     npm_token: ${{ secrets.NPM_TOKEN }}
-      - name: Publish and Release
-        run: npm publish
+      - name: Publish to npm
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
