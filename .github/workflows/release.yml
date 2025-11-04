@@ -24,9 +24,21 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
+      - name: date script
+        id: date-script
+        uses: actions/github-script@v3
+        with:
+          script: |
+          const dt = new Date()
+          dt.setDate(dt.getDate() - 7)
+          const beforeDate = new Date().toLocaleDateString("ja-JP", {year: "numeric", month: "2-digit", day: "2-digit"}).replaceAll('/', '-')
+          console.log("***beforeDate:", beforeDate)
+          return beforeDate
+          result-encoding: string
       - name: Prepare
         run: |
-          npm ci
+          echo "${{ steps.date-script.outputs.result }}"
+          npm ci ${{ steps.date-script.outputs.result }}
           npm test
           npm shrinkwrap
       # - name: Publish and Release
@@ -34,7 +46,7 @@ jobs:
       #   with:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
       #     npm_token: ${{ secrets.NPM_TOKEN }}
-      - name: Publish to npm
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Publish to npm
+      #   run: npm publish --provenance --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
