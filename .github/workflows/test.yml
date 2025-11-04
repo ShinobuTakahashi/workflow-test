@@ -30,7 +30,7 @@ jobs:
 
       - name: Prepare
         run: |
-          echo "${{ steps.date-script.outputs.result }}"
-          npm ci ${{ steps.date-script.outputs.result }}
+          echo "date=$steps.date-script.outputs.result"
+          npm ci $steps.date-script.outputs.result
           npm test
           npm shrinkwrap
