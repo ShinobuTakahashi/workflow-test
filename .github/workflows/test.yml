@@ -24,13 +24,13 @@ jobs:
           script: |
             const dt = new Date()
             dt.setDate(dt.getDate() - 7)
-            const beforeDate = new Date().toLocaleDateString("ja-JP", {year: "numeric", month: "2-digit", day: "2-digit"}).replaceAll('/', '-')
+            const beforeDate = dt.toLocaleDateString("ja-JP", {year: "numeric", month: "2-digit", day: "2-digit"}).replaceAll('/', '-')
             console.log("***beforeDate:", beforeDate)
             return beforeDate
           result-encoding: string
       - name: Prepare
         run: |
           echo "${{ steps.date-script.outputs.result }}"
-          npm ci --before ${{ steps.date-script.outputs.result }}
+          npm i --before ${{ steps.date-script.outputs.result }}
           npm test
           npm shrinkwrap
