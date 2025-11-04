@@ -27,7 +27,7 @@ jobs:
             const beforeDate = new Date().toLocaleDateString("ja-JP", {year: "numeric", month: "2-digit", day: "2-digit"}).replaceAll('/', '-')
             console.log("***beforeDate:", beforeDate)
             return beforeDate
-            result-encoding: string
+
       - name: Prepare
         run: |
           echo "${{ steps.date-script.outputs.result }}"
