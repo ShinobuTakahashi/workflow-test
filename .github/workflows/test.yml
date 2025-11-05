@@ -34,6 +34,7 @@ jobs:
           npm i --before ${{ steps.date-script.outputs.result }}
           if [[ `git status --porcelain` ]]; then
             echo "##### Changes"
+            exit 1
           else
             echo "###### No changes"
           fi
