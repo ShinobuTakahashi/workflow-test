@@ -33,7 +33,7 @@ jobs:
           echo "${{ steps.date-script.outputs.result }}"
           npm i --before ${{ steps.date-script.outputs.result }}
           if [[ `git status --porcelain` ]]; then
-            echo "# npm install results in changes"
+            echo "- npm install results in changes!"
             exit 1
           fi
           npm test
