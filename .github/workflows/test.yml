@@ -23,7 +23,7 @@ jobs:
         with:
           script: |
             const dt = new Date()
-            dt.setDate(dt.getDate() - 7)
+            dt.setDate(dt.getDate() - 25)
             const beforeDate = dt.toLocaleDateString("ja-JP", {year: "numeric", month: "2-digit", day: "2-digit"}).replaceAll('/', '-')
             console.log("***beforeDate:", beforeDate)
             return beforeDate
