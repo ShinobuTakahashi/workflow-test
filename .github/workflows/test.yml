@@ -32,5 +32,10 @@ jobs:
         run: |
           echo "${{ steps.date-script.outputs.result }}"
           npm i --before ${{ steps.date-script.outputs.result }}
+          if [[ `git status --porcelain` ]]; then
+            echo "##### Changes"
+          else
+            echo "###### No changes"
+          fi
           npm test
           npm shrinkwrap
