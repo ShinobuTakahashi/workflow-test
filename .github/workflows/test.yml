@@ -18,9 +18,9 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
       - name: test action install
-        uses: akashic-games/action-install@b785c35cd47820c58d6a49478e62fffa4b10ee9d
-        # with:
-        #   before_days: 5
+        uses: akashic-games/action-install@add-action
+        with:
+          before_days: 5
       # - name: Make value for the before option
       #   id: date-value
       #   uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b #v7.1.0
