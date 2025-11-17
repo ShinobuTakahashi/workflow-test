@@ -3,12 +3,12 @@ name: test
 on: [pull_request]
 
 env:
-  NODE_VERSION: 20
+  NODE_VERSION: 24
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    name: Test Publish and Release
+    name: Test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -17,8 +17,27 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-      - name: Prepare
-        run: |
-          npm ci
-          npm test
-          npm shrinkwrap
+      - name: test action install
+        uses: akashic-games/action-install@add-action
+        with:
+          before_days: 10
+      # - name: Make value for the before option
+      #   id: date-value
+      #   uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b #v7.1.0
+      #   with:
+      #     script: |
+      #       const dt = new Date()
+      #       dt.setDate(dt.getDate() - 7)
+      #       const beforeDate = dt.toLocaleDateString("ja-JP", {year: "numeric", month: "2-digit", day: "2-digit"}).replaceAll('/', '-')
+      #       return beforeDate
+      #     result-encoding: string
+      # - name: Prepare
+      #   run: |
+      #     # echo "${{ steps.date-value.outputs.result }}"
+      #     npm i --before ${{ steps.date-value.outputs.result }}
+      #     if [[ `git status --porcelain` ]]; then
+      #       echo "- npm install results in changes!"
+      #       exit 1
+      #     fi
+      #     npm test
+      #     npm shrinkwrap
