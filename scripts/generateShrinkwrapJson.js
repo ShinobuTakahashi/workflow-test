@@ -1,0 +1,58 @@
+import * as fs from "fs";
+import * as path from "path";
+import { execSync } from "child_process";
+
+const BEFORE_DAYS = 7;
+const packageJsonPath = path.resolve(process.cwd(), "package.json");
+
+let isError = false;
+
+/**
+ * 日付を "yyyy-mm-dd" 形式の文字列へ変換し返す。
+ */
+function formatDate(date) {
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  };
+  const formatted = new Intl.DateTimeFormat("ja-JP", options).format(date);
+  return formatted.replace(/\//g, "-");
+}
+
+/**
+ * akashic-cli 以外の各 package 配下に shrinkwrap.json を生成する。
+ */
+async function generateShrinkwrapJson() {
+  let pkgName = "";
+
+  try {
+    const pkgJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+    pkgName = pkgJson.name;
+    console.log(`--------------- ${pkgName} generateShrinkwrapJson start ---`);
+
+    const dt = new Date();
+    dt.setDate(dt.getDate() - BEFORE_DAYS);
+    const formattedDate = formatDate(dt);
+
+    const npmInstallCmd = `npm i --before ${formattedDate}`;
+    console.log(`- exec: "${npmInstallCmd}"`);
+    execSync(npmInstallCmd, { stdio: "inherit" });
+
+    const npmShrinkwrapCmd = "npm shrinkwrap";
+    console.log(`- exec: "${npmShrinkwrapCmd}"`);
+    execSync(npmShrinkwrapCmd, { stdio: "inherit" });
+
+  } catch (err) {
+    console.error("--- Error:", err);
+    isError = true;
+  } finally {
+    console.log(`------------ ${pkgName}  end ------------`);
+  }
+}
+
+process.on("beforeExit", () => {
+  if (isError) process.exit(1);
+});
+
+generateShrinkwrapJson();
