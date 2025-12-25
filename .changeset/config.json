@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@3.1.2/schema.json",
   "changelog": [
     "@changesets/cli/changelog",
-    { "repo": "ShinobuTakahashi/tesworkflow-test" }
+    { "repo": "@shinobu_takahashi/workflow-test" }
   ],
   "commit": false,
   "fixed": [],
