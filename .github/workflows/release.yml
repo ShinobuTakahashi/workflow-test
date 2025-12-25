@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: 20
+  NODE_VERSION: 24
 
 permissions:
   contents: read
@@ -28,13 +28,21 @@ jobs:
         run: |
           npm ci
           npm test
-          npm shrinkwrap
       # - name: Publish and Release
       #   uses: akashic-games/action-release@v2
       #   with:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
       #     npm_token: ${{ secrets.NPM_TOKEN }}
-      - name: Publish to npm
-        run: npm publish --provenance --access public
+      # - name: Publish to npm
+      #   run: npm publish --provenance --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create Release PullRequest or Publish
+        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
+        with:
+          publish: npm run release-packages
+          version: npm run version-packages
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
