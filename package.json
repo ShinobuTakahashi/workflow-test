@@ -1,6 +1,6 @@
 {
   "name": "@shinobu_takahashi/workflow-test",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "for test",
   "main": "index.js",
   "type": "module",
@@ -13,7 +13,6 @@
     "version-packages": "changeset version",
     "release-packages": "changeset publish",
     "prepublishOnly": "node ./scripts/generateShrinkwrapJson.js"
-
   },
   "repository": {
     "type": "git",
@@ -29,6 +28,6 @@
     "commander": "14.0.0",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.29.8",
-    "minizlib": "3.1.0" 
+    "minizlib": "3.1.0"
   }
 }
