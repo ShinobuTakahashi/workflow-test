@@ -39,10 +39,16 @@ async function generateShrinkwrapJson() {
     dt.setDate(dt.getDate() - BEFORE_DAYS);
     const formattedDate = formatDate(dt);
 
-    const npmInstallCmd = `npm aai --before ${formattedDate}`;
+    const npmInstallCmd = `npm i --before ${formattedDate}`;
     console.log(`- exec: "${npmInstallCmd}"`);
     logs.push(`- exec: "${npmInstallCmd}"`);
     execSync(npmInstallCmd, { stdio: "inherit" });
+
+    // エラーテスト
+    const errCmd = "npm i @akashic/akashic-engine@3.21.2 --before 2025-09-10";
+    console.log(`- exec: "${errCmd}"`);
+    logs.push(`- exec: "${errCmd}"`);
+    execSync(errCmd, { stdio: "inherit" });
 
     const npmShrinkwrapCmd = "npm shrinkwrap";
     console.log(`- exec: "${npmShrinkwrapCmd}"`);
