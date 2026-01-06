@@ -12,7 +12,8 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release-packages": "changeset publish",
-    "prepublishOnly": "node ./scripts/generateShrinkwrapJson.js"
+    "prepublishOnly": "node ./scripts/generateShrinkwrapJson.js",
+    "hoge": "node ./scripts/generateShrinkwrapJson.js"
   },
   "repository": {
     "type": "git",

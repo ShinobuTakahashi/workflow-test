@@ -20,6 +20,9 @@ function formatDate(date) {
   return formatted.replace(/\//g, "-");
 }
 
+
+let logs = [];
+
 /**
  * akashic-cli 以外の各 package 配下に shrinkwrap.json を生成する。
  */
@@ -30,6 +33,7 @@ async function generateShrinkwrapJson() {
     const pkgJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
     pkgName = pkgJson.name;
     console.log(`--------------- ${pkgName} generateShrinkwrapJson start ---`);
+    logs.push(`--------------- ${pkgName} generateShrinkwrapJson start ---`);
 
     const dt = new Date();
     dt.setDate(dt.getDate() - BEFORE_DAYS);
@@ -37,17 +41,23 @@ async function generateShrinkwrapJson() {
 
     const npmInstallCmd = `npm i --before ${formattedDate}`;
     console.log(`- exec: "${npmInstallCmd}"`);
+    logs.push(`- exec: "${npmInstallCmd}"`);
     execSync(npmInstallCmd, { stdio: "inherit" });
 
     const npmShrinkwrapCmd = "npm shrinkwrap";
     console.log(`- exec: "${npmShrinkwrapCmd}"`);
+    logs.push(`- exec: "${npmShrinkwrapCmd}"`);
     execSync(npmShrinkwrapCmd, { stdio: "inherit" });
 
   } catch (err) {
     console.error("--- Error:", err);
+    logs.push("--- Error:", err);
     isError = true;
   } finally {
     console.log(`------------ ${pkgName}  end ------------`);
+    logs.push(`------------ ${pkgName}  end ------------2`);
+    const text = logs.join("\n");
+    fs.writeFileSync("./generateShrinkwrapJson.log", text, "utf-8");
   }
 }
 
