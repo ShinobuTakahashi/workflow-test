@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.4.8
+
+### Patch Changes
+
+- 07d3c29: for error case
+
 ## 0.4.7
 
 ### Patch Changes
