@@ -57,6 +57,7 @@ async function generateShrinkwrapJson() {
     console.log(`------------ ${pkgName}  end ------------`);
     logs.push(`------------ ${pkgName}  end ------------2`);
     const text = logs.join("\n");
+
     fs.writeFileSync("./generateShrinkwrapJson.log", text, "utf-8");
   }
 }
