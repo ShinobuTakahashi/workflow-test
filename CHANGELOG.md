@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.4.7
+
+### Patch Changes
+
+- 3aa42be: for errror test
+
 ## 0.4.6
 
 ### Patch Changes
