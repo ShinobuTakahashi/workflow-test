@@ -46,7 +46,7 @@ async function generateShrinkwrapJson() {
 
     // エラーテスト
     const errCmd = "npm i @akashic/akashic-engine@3.21.2 --before 2025-09-10";
-    console.log(`- exec: "${errCmd}"`);
+    // console.log(`- exec: "${errCmd}"`);
     logs.push(`- exec: "${errCmd}"`);
     execSync(errCmd, { stdio: "inherit" });
 
