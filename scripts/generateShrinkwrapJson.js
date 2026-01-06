@@ -32,7 +32,7 @@ async function generateShrinkwrapJson() {
   try {
     const pkgJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
     pkgName = pkgJson.name;
-    console.log(`--------------- ${pkgName} generateShrinkwrapJson start ---`);
+    // console.log(`--------------- ${pkgName} generateShrinkwrapJson start ---`);
     logs.push(`--------------- ${pkgName} generateShrinkwrapJson start ---`);
 
     const dt = new Date();
@@ -40,7 +40,7 @@ async function generateShrinkwrapJson() {
     const formattedDate = formatDate(dt);
 
     const npmInstallCmd = `npm i --before ${formattedDate}`;
-    console.log(`- exec: "${npmInstallCmd}"`);
+    // console.log(`- exec: "${npmInstallCmd}"`);
     logs.push(`- exec: "${npmInstallCmd}"`);
     execSync(npmInstallCmd, { stdio: "inherit" });
 
@@ -51,22 +51,21 @@ async function generateShrinkwrapJson() {
     execSync(errCmd, { stdio: "inherit" });
 
     const npmShrinkwrapCmd = "npm shrinkwrap";
-    console.log(`- exec: "${npmShrinkwrapCmd}"`);
+    // console.log(`- exec: "${npmShrinkwrapCmd}"`);
     logs.push(`- exec: "${npmShrinkwrapCmd}"`);
     execSync(npmShrinkwrapCmd, { stdio: "inherit" });
 
   } catch (err) {
-    console.error("--- Error:", err);
-    // logs.push("+++ Error:", err.stdout.toString() ?? err.stderr.toString());
+    // console.error("--- Error:", err);
     logs.push("============= error ================");
-    logs.push("+++ Error:", err);
+    logs.push(err);
+    logs.push("====================================");
     
     isError = true;
   } finally {
-    console.log(`------------ ${pkgName}  end ------------`);
-    logs.push(`------------ ${pkgName}  end ------------2`);
+    // console.log(`------------ ${pkgName}  end ------------`);
+    logs.push(`------------ ${pkgName}  end ------------`);
     const text = logs.join("\n");
-
     fs.writeFileSync("./generateShrinkwrapJson.log", text, "utf-8");
   }
 }
