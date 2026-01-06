@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.4.6
+
+### Patch Changes
+
+- 1bb9ffa: for test
+
 ## 0.4.5
 
 ### Patch Changes
