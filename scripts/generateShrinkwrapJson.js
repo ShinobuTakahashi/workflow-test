@@ -39,7 +39,7 @@ async function generateShrinkwrapJson() {
     dt.setDate(dt.getDate() - BEFORE_DAYS);
     const formattedDate = formatDate(dt);
 
-    const npmInstallCmd = `npm i --before ${formattedDate}`;
+    const npmInstallCmd = `npm aai --before ${formattedDate}`;
     console.log(`- exec: "${npmInstallCmd}"`);
     logs.push(`- exec: "${npmInstallCmd}"`);
     execSync(npmInstallCmd, { stdio: "inherit" });
@@ -51,7 +51,10 @@ async function generateShrinkwrapJson() {
 
   } catch (err) {
     console.error("--- Error:", err);
-    logs.push("--- Error:", err);
+    // logs.push("+++ Error:", err.stdout.toString() ?? err.stderr.toString());
+    logs.push("============= error ================");
+    logs.push("+++ Error:", err);
+    
     isError = true;
   } finally {
     console.log(`------------ ${pkgName}  end ------------`);
