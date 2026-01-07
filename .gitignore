@@ -1,3 +1,4 @@
 node_modules
 generateShrinkwrapJson.log
 logs/
+npm-shrinkwrap.json
