@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.4.12
+
+### Patch Changes
+
+- 3973fa6: test
+
 ## 0.4.11
 
 ### Patch Changes
