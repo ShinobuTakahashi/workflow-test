@@ -42,21 +42,29 @@ async function generateShrinkwrapJson() {
     const formattedDate = formatDate(dt);
 
     const npmInstallCmd = `npm i --before ${formattedDate}`;
-    // console.log(`- exec: "${npmInstallCmd}"`);
+    console.log(`- exec: "${npmInstallCmd}"`);
     logs.push(`- exec: "${npmInstallCmd}"`);
-    execSync(npmInstallCmd, { stdio: "inherit" });
+    // const result = execSync(npmInstallCmd, { stdio: "inherit", encoding: "utf8" });
+    let result = execSync(npmInstallCmd, {encoding: "utf8" });
+    logs.push(result);
 
     // エラーテスト
     const errCmd = "npm i @akashic/akashic-engine@3.21.2 --before 2025-09-10";
     // console.log(`- exec: "${errCmd}"`);
     logs.push(`- exec: "${errCmd}"`);
-    execSync(errCmd, { stdio: "inherit" });
+    // const result2 = execSync(errCmd, { stdio: "inherit" });
+    // result = execSync(errCmd, {encoding: "utf8" });
+    // console.log("=== errResult:", result);
+    // logs.push(result);
 
     const npmShrinkwrapCmd = "npm shrinkwrap";
     // console.log(`- exec: "${npmShrinkwrapCmd}"`);
     logs.push(`- exec: "${npmShrinkwrapCmd}"`);
-    execSync(npmShrinkwrapCmd, { stdio: "inherit" });
-    
+    // execSync(npmShrinkwrapCmd, { stdio: "inherit" });
+    result = execSync(npmShrinkwrapCmd, { encoding: "utf8" });
+    console.log("=== result2:", result);
+    logs.push(result);
+
 
   } catch (err) {
     // console.error("--- Error:", err);
@@ -68,11 +76,11 @@ async function generateShrinkwrapJson() {
   } finally {
     // console.log(`------------ ${pkgName}  end ------------`);
     logs.push(`------------ ${pkgName}  end ------------`);
+
     if (!fs.existsSync("./logs")) fs.mkdirSync("./logs");
     const text = logs.join("\n");
-    const name = pkgName.replaceAll("/", "_");
-    console.log("*** path:", `./logs/${name}.log`);
-    fs.writeFileSync(`./logs/${name}.log`, text, "utf-8");
+    const fileName = pkgName.replaceAll("/", "_");
+    fs.writeFileSync(`./logs/${fileName}.log`, text, "utf-8");
   }
 }
 
