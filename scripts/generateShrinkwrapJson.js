@@ -49,9 +49,9 @@ async function generateShrinkwrapJson() {
     logs.push(result);
 
     // エラーテスト
-    const errCmd = "npm i @akashic/akashic-engine@3.21.2 --before 2025-09-10";
+    // const errCmd = "npm i @akashic/akashic-engine@3.21.2 --before 2025-09-10";
     // console.log(`- exec: "${errCmd}"`);
-    logs.push(`- exec: "${errCmd}"`);
+    // logs.push(`- exec: "${errCmd}"`);
     // const result2 = execSync(errCmd, { stdio: "inherit" });
     // result = execSync(errCmd, {encoding: "utf8" });
     // console.log("=== errResult:", result);
@@ -62,9 +62,8 @@ async function generateShrinkwrapJson() {
     logs.push(`- exec: "${npmShrinkwrapCmd}"`);
     // execSync(npmShrinkwrapCmd, { stdio: "inherit" });
     result = execSync(npmShrinkwrapCmd, { encoding: "utf8" });
-    console.log("=== result2:", result);
+    console.log("- result2:", result);
     logs.push(result);
-
 
   } catch (err) {
     // console.error("--- Error:", err);
